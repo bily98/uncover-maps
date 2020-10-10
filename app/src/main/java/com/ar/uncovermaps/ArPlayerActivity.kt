@@ -3,14 +3,17 @@ package com.ar.uncovermaps
 import android.content.ComponentCallbacks2
 import android.content.Context
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.preference.Preference.OnPreferenceChangeListener
+import android.preference.SwitchPreference
 import android.util.Log
 import android.view.KeyEvent
 import android.view.MotionEvent
+import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.unity3d.player.UnityPlayer
 import kotlinx.android.synthetic.main.activity_ar_player.*
+
 
 class ArPlayerActivity : AppCompatActivity() {
     var scene = true
@@ -32,6 +35,7 @@ class ArPlayerActivity : AppCompatActivity() {
         // To disable fullscreen.
         window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
+
         fab_btn.setOnClickListener{
             if (scene) {
                 UnityPlayer.UnitySendMessage("ModelContainer", "OpenSceneFoundation" , "")
@@ -42,6 +46,9 @@ class ArPlayerActivity : AppCompatActivity() {
             }
         }
     }
+
+
+
 
     override fun onDestroy() {
         mUnityPlayer?.destroy()
@@ -125,6 +132,10 @@ class ArPlayerActivity : AppCompatActivity() {
 
     fun onAnimationCompleted() {
         Log.d("Ar Tutorial", "onAnimationCompleted")
+    }
+
+    fun cambiarScenece(view: View) {
+
     }
 }
 

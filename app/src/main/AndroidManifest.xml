@@ -10,15 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data android:name="com.google.ar.core" android:value="required" />
-        <activity
-            android:name=".SplashScreen" android:theme="@style/SplashScreen" android:screenOrientation="portrait">
+
+        <activity android:name=".SplashScreen" android:theme="@style/SplashScreen" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SheetDialog" android:theme="@style/SheetDialog" android:screenOrientation="portrait">
+
+        </activity>
+
         <activity android:name=".MainActivity" android:screenOrientation="portrait"></activity>
+
         <activity android:name=".ArPlayerActivity" android:screenOrientation="portrait">
             <meta-data
                 android:name="unityplayer.UnityActivity"
