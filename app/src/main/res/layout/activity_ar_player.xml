@@ -11,13 +11,5 @@
         android:layout_height="match_parent"
         android:background="@android:color/black" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/fab_btn"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_baseline_3d_rotation_24"
-        />
     <include layout="@layout/persistent_bottom_sheet"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

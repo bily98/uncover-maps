@@ -17,13 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SheetDialog" android:theme="@style/SheetDialog" android:screenOrientation="portrait">
 
-        </activity>
-
-        <activity android:name=".MainActivity" android:screenOrientation="portrait"></activity>
-
-        <activity android:name=".ArPlayerActivity" android:screenOrientation="portrait">
+        <activity android:name=".ArPlayerActivity" android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <meta-data
                 android:name="unityplayer.UnityActivity"
                 android:value="true" />

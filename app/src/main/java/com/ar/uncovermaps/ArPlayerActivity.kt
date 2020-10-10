@@ -10,9 +10,11 @@ import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
+import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
 import com.unity3d.player.UnityPlayer
 import kotlinx.android.synthetic.main.activity_ar_player.*
+import kotlinx.android.synthetic.main.persistent_bottom_sheet.*
 
 
 class ArPlayerActivity : AppCompatActivity() {
@@ -28,6 +30,8 @@ class ArPlayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ar_player)
 
+        Log.d("Ar Tutorial", "Unity AR - $KEY_IMAGE_URL")
+
         mUnityPlayer = CustomUnityPlayer(this)
         containerArUnityPlayer.addView(mUnityPlayer)
         mUnityPlayer?.requestFocus()
@@ -35,14 +39,15 @@ class ArPlayerActivity : AppCompatActivity() {
         // To disable fullscreen.
         window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-
-        fab_btn.setOnClickListener{
-            if (scene) {
+        idSwitch.setOnCheckedChangeListener { switch, isChecked ->
+            if (isChecked) {
                 UnityPlayer.UnitySendMessage("ModelContainer", "OpenSceneFoundation" , "")
-                scene = false
+                qr.setImageResource(R.drawable.qr_disabled)
+                ubication.setImageResource(R.drawable.ubication_enabled)
             } else {
-                UnityPlayer.UnitySendMessage("ModelContainer", "OpenSceneVuforia" , "")
-                scene = true
+                UnityPlayer.UnitySendMessage("WebMapLoader", "OpenSceneVuforia" , "")
+                qr.setImageResource(R.drawable.qr_select)
+                ubication.setImageResource(R.drawable.ubication_disabled)
             }
         }
     }
