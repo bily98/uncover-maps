@@ -22,15 +22,15 @@ class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-        setViews()
-        initViews()
+//        setViews()
+//        initViews()
         MiHilo()
-        /*handler = Handler()
+        handler = Handler()
         handler.postDelayed({
-            val intent = Intent(this, ArPlayerActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 3000)*/
+        }, 3000)
     }
 
     fun MiHilo(){
