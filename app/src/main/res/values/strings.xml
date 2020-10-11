@@ -6,9 +6,9 @@
     <string name="main_load_asset_bundle_already_downloaded">The model has already cached!</string>
     <string name="main_load_asset_bundle_exist">3D Model Assets Cached</string>
 
-    <string name="main_default_target_image_url">https://www.mdpi.com/machines/machines-07-00029/article_deploy/html/images/machines-07-00029-g025-550.jpg</string>
+    <string name="main_default_target_image_url">https://raw.githubusercontent.com/bily98/uncover-maps/master/TeatroRubenDario.png</string>
 
-    <string name="main_default_target_modal_url">https://github.com/bily98/uncover-maps/blob/master/bundleuncovermaps?raw=true</string>
+    <string name="main_default_target_modal_url">https://github.com/bily98/uncover-maps/blob/master/bundledario?raw=true</string>
 
     <string name="main_load_asset_bundle_success">Asset bundle is cached successfully.</string>
     <string name="main_load_asset_bundle_fail">Error occurred as caching. The url may be invalid!</string>
