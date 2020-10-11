@@ -28,9 +28,11 @@ class ArPlayerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ar_player)
 
-        Log.d("Ar Tutorial", "Unity AR - $KEY_IMAGE_URL")
+
+
+
+        setContentView(R.layout.activity_ar_player)
 
         mUnityPlayer = CustomUnityPlayer(this)
         containerArUnityPlayer.addView(mUnityPlayer)
