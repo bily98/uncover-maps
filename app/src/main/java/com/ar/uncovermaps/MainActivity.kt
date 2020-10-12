@@ -21,22 +21,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setViews() {
-        val lastUrl = Utils.getLastSavedModelUrl(this, KEY_LAST_SAVED_URL)
-        lastUrl?.let { safeLastUrl ->
-            etMainAssetBundleUrl.setText(safeLastUrl)
-        }
-
         if (Utils.isFileExist(this, CACHED_MODEL_FILE_NAME)) {
-            tvMainAssetBundleStatus.visibility = View.VISIBLE
-            if (etMainTargetImageUrl.text.startsWith("http")) {
-                btnMainPlay.isEnabled = true
+            if (getString(R.string.main_default_target_image_url).startsWith("http")) {
+                GoView()
             }
         }
     }
 
     private fun initViews() {
-        btnMainLoadAssetBundle.setOnClickListener {
-            val url = etMainAssetBundleUrl.text.toString()
+            val url = getString(R.string.main_default_target_modal_url)
             url.isNotBlank().let {
                 val lastUrl = Utils.getLastSavedModelUrl(this, KEY_LAST_SAVED_URL)
                 when {
@@ -48,8 +41,6 @@ class MainActivity : AppCompatActivity() {
                         )
                     }
                     url.isNotBlank() && url.startsWith("http") -> {
-                        btnMainLoadAssetBundle.isEnabled = false
-                        btnMainLoadAssetBundle.setText(R.string.main_load_asset_bundle_loading)
                         //Download Search Image
                         AsyncImageDownloader(
                             this,
@@ -58,10 +49,6 @@ class MainActivity : AppCompatActivity() {
                             object : AsyncImageDownloader.ResultListener {
                                 override fun actionCompleted(isSuccess: Boolean) {
                                     runOnUiThread {
-                                        btnMainPlay.isEnabled = isSuccess
-                                        btnMainLoadAssetBundle.isEnabled = true
-                                        tvMainAssetBundleStatus.visibility = View.VISIBLE
-                                        btnMainLoadAssetBundle.setText(R.string.main_load_asset_bundle)
                                         val errorTextResId =
                                             if (isSuccess) R.string.main_load_asset_bundle_success else R.string.main_load_asset_bundle_fail
                                         Toast.makeText(
@@ -69,6 +56,8 @@ class MainActivity : AppCompatActivity() {
                                             errorTextResId,
                                             Toast.LENGTH_LONG
                                         ).show()
+
+                                        GoView()
                                     }
                                 }
                             }
@@ -78,13 +67,12 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-        }
+    }
 
-        btnMainPlay.setOnClickListener {
-            val arIntent = Intent(this, ArPlayerActivity::class.java)
-            arIntent.putExtra(ArPlayerActivity.KEY_IMAGE_URL, etMainTargetImageUrl.text.toString())
-            arIntent.putExtra(ArPlayerActivity.KEY_MODEL_PATH, "$filesDir/$CACHED_MODEL_FILE_NAME")
-            startActivity(arIntent)
-        }
+    public fun GoView() {
+        val arIntent = Intent(this, ArPlayerActivity::class.java)
+        arIntent.putExtra(ArPlayerActivity.KEY_IMAGE_URL, getString(R.string.main_default_target_image_url))
+        arIntent.putExtra(ArPlayerActivity.KEY_MODEL_PATH, "$filesDir/$CACHED_MODEL_FILE_NAME")
+        startActivity(arIntent)
     }
 }

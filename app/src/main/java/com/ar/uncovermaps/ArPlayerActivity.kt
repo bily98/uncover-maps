@@ -11,14 +11,17 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.CompoundButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.unity3d.player.UnityPlayer
 import kotlinx.android.synthetic.main.activity_ar_player.*
 import kotlinx.android.synthetic.main.persistent_bottom_sheet.*
+import kotlin.math.round
 
 
 class ArPlayerActivity : AppCompatActivity() {
     var scene = true
+    var share = false
     companion object {
         const val KEY_IMAGE_URL = "KEY_IMAGE_URL"
         const val KEY_MODEL_PATH = "KEY_MODEL_PATH"
@@ -141,8 +144,20 @@ class ArPlayerActivity : AppCompatActivity() {
         Log.d("Ar Tutorial", "onAnimationCompleted")
     }
 
-    fun cambiarScenece(view: View) {
-
+    fun showToast(distance: Float) {
+        distanceTxt.setText("Distancia: " + (Math.round(distance * 10.0) / 10.0) + "m.")
+        if ((distance < 5)) {
+            if (!share) {
+                Toast.makeText(
+                    this,
+                    "Podrás compartir tu ubicación en futuras actualizaciones!!!",
+                    Toast.LENGTH_LONG
+                ).show()
+                share = true
+            }
+        } else {
+            share = false
+        }
     }
 }
 

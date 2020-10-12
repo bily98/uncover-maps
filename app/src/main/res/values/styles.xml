@@ -11,4 +11,7 @@
     </style>
     <style name="SheetDialog" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
+    <style name="Downloading" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_loading</item>
+    </style>
 </resources>
